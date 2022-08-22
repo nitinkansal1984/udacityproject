@@ -6,3 +6,24 @@ Forwarding from 127.0.0.1:8000 -> 80
 Forwarding from [::1]:8000 -> 80
 Handling connection for 8000
 Handling connection for 8000
+
+### Output of prediction
+root@udacityvm:~/DevOps_Microservices/project-ml-microservice-kubernetes# kubectl get pods
+NAME             READY   STATUS    RESTARTS      AGE
+udacityproject   1/1     Running   1 (20h ago)   20h
+root@udacityvm:~/DevOps_Microservices/project-ml-microservice-kubernetes#
+root@udacityvm:~/DevOps_Microservices/project-ml-microservice-kubernetes#
+root@udacityvm:~/DevOps_Microservices/project-ml-microservice-kubernetes# kubectl port-forward udacityproject 8000:80 &
+[1] 8661
+root@udacityvm:~/DevOps_Microservices/project-ml-microservice-kubernetes# Forwarding from 127.0.0.1:8000 -> 80
+Forwarding from [::1]:8000 -> 80
+
+root@udacityvm:~/DevOps_Microservices/project-ml-microservice-kubernetes# ./make_prediction.sh
+Port: 8000
+Handling connection for 8000
+{
+  "prediction": [
+    20.35373177134412
+  ]
+}
+root@udacityvm:~/DevOps_Microservices/project-ml-microservice-kubernetes#
